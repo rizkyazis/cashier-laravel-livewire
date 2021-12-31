@@ -16,4 +16,8 @@ class Product extends Model
     public function category(){
         return $this->hasOneThrough(Category::class,ProductCategory::class);
     }
+
+    public function cart(){
+        return $this->hasMany(Cart::class);
+    }
 }

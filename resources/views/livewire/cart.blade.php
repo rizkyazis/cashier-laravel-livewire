@@ -10,20 +10,24 @@
         <div class="col-2  mb-4 ">
             <b>Total</b>
         </div>
-        <div class="col-2 ">
-            <img src="https://user-images.githubusercontent.com/61135648/85206187-da564b00-b352-11ea-8dcc-444a537813b4.png" class="rounded img-square-rounded w-100" alt="Product">
+        @foreach ($cartProducts as $item)
+        <div class="col-2 mb-1">
+            <img src="{{$item->product->image}}" class="rounded img-square-rounded w-100" alt="Product">
         </div>
         <div class="col-5">
-            <span>Burger Enak Banget Gaboong serius ini mah bener bener</span>
+            <span>{{$item->product->name}}</span>
             <br>
-            <span>$3.56</span>
+            <b>${{$item->product->price}}</b>
         </div>
         <div class="col-3">
-            <input type="number" class="form-control w-50">
+            <button class="btn btn-sm btn-light"  wire:click="decreaseQuantity({{$item->id}})">-</button>
+            <b  class="pl-2 pr-2">{{$item->quantity}}</b>
+            <button class="btn btn-sm btn-light" wire:click="increaseQuantity({{$item->id}})">+</button>
         </div>
         <div class="col-2">
-            <span><b>$4.55</b></span>
+            <span><b>${{$item->product->price * $item->quantity}}</b></span>
         </div>
+        @endforeach
     </div>
 
 

@@ -50,12 +50,7 @@ class ProductIndex extends Component
     }
 
     public function addCart($product_id){
-        $perulangan = 0 ;
-        for($i=8;$i<=20400;$i=$i+4){
-            $i = $i +2;
-            $perulangan++;
-        }
-        dd($perulangan);
+        $this->emit('addCart',$product_id);
     }
 
 }
